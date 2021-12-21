@@ -62,6 +62,20 @@ h1,h2,h3,h4,h5,h6{
     left: 0;
     width: 100%;
 }
+
+#videoContainer{
+    width: 60%;
+    margin: 0 auto;
+    padding: 30px 0;
+}
+
+.img-responsive{
+    transition: transform 0.5s;
+}
+
+.img-responsive:hover{
+    transform: scale(1.1);
+}
 /*-- header-left --*/
 .header {
     padding: 1em 0;
@@ -1693,7 +1707,7 @@ ul.pagination li a {
 .well {
 	padding: 10px;
 }
-.nav > li > a {
+#navigation > li > a {
 	font-size: 14px;
 }
 table.table.table-striped,.table-bordered,.bs-docs-example {
@@ -1958,7 +1972,7 @@ table.table.table-striped,.table-bordered,.bs-docs-example {
 	font-weight:500;
 }
 .agileinfo_mail_grid_left textarea::-webkit-input-placeholder{
-	color:#b5b5b5; !important;
+	color:#b5b5b5 !important;
 }
 .agileinfo_mail_grid_left input[type="submit"]{
 	font-size:1em;
