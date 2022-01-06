@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rm:schema xmlns:rm="http://www.w3.org/2001/XMLSchema">
+<rm:element name = "rental">
+   <rm:complexType>
+      <rm:sequence>
+         <rm:element name = "Tenant" maxOccurs = "unbounded">
+   <rm:complexType>
+      <rm:sequence>
+         <rm:element name ="Name" type = "rm:string">
+            </rm:element>
+         <rm:element name ="Age" type = "myage">
+            </rm:element>
+         <rm:element name ="NO_MEMBER" type = "rm:integer">
+           </rm:element>
+           <rm:element name ="ID" type = "check">
+           </rm:element>
+           
+        
+           
+           </rm:sequence>
+           </rm:complexType>
+           </rm:element>
+           
+ 
+         <rm:element name = "Owner" maxOccurs = "unbounded">
+  <rm:complexType>
+     <rm:sequence>
+        <rm:element name = "Name" type = "rm:string">
+          </rm:element>
+        <rm:element name = "No_building" type = "rm:integer">
+          </rm:element>
+        <rm:element name = "ID" type ="check">
+          </rm:element>
+          
+          </rm:sequence>
+           </rm:complexType>
+           </rm:element>
+           
+         <rm:element name = "BUILDING" maxOccurs = "unbounded">
+  <rm:complexType>
+     <rm:sequence>
+        <rm:element name = "House_No" type = "check">
+          </rm:element>
+        <rm:element name = "Type" type = "rm:string">
+          </rm:element>
+        <rm:element name = "Area" type ="rm:string">
+          </rm:element>
+          
+          </rm:sequence>
+           </rm:complexType>
+           </rm:element>
+          
+         <rm:element name = "FURNISHING" maxOccurs = "unbounded">
+  <rm:complexType>
+     <rm:sequence>
+        <rm:element name = "Type" type = "rm:string">
+          </rm:element>
+        <rm:element name = "No_pieces" type = "rm:integer">
+          </rm:element>
+        <rm:element name = "date" type ="rm:date">
+          </rm:element>
+
+
+	</rm:sequence>
+           </rm:complexType>
+           </rm:element> 
+           
+                    
+         <rm:element name = "Contract" maxOccurs = "unbounded">
+  <rm:complexType>
+     <rm:sequence>
+        <rm:element name = "ID" type = "rm:integer">
+          </rm:element>
+        <rm:element name = "Years" type = "rm:integer">
+          </rm:element>
+        <rm:element name = "Do_registration" type ="rm:date">
+          </rm:element>
+          <rm:element name = "Security" type ="rm:float">
+          </rm:element>
+          
+          </rm:sequence>
+           </rm:complexType>
+           </rm:element>
+          
+          <rm:element name = "TRANSACTION" maxOccurs = "unbounded">
+  <rm:complexType>
+     <rm:sequence>
+        <rm:element name = "Type" type = "rm:string">
+          </rm:element>
+        <rm:element name = "PAYMENT_ID" type = "rm:integer">
+          </rm:element>
+        <rm:element name = "Date" type ="rm:date">
+          </rm:element>
+          <rm:element name = "Dues" type ="rm:integer">
+          </rm:element>
+          
+          </rm:sequence>
+           </rm:complexType>
+           </rm:element>
+          
+          <rm:element name = "TENANT_OUT" maxOccurs = "unbounded">
+  <rm:complexType>
+     <rm:sequence>
+        <rm:element name = "Date_checkout" type = "rm:date">
+          </rm:element>
+        <rm:element name = "feedback" type = "rm:string">
+          </rm:element>
+        <rm:element name = "status" type ="rm:string">
+          </rm:element>
+     </rm:sequence>
+ </rm:complexType>
+          </rm:element>
+           </rm:sequence>
+           </rm:complexType>
+           </rm:element>
+           <rm:simpleType name = "myage">
+           <rm:restriction base =  "rm:integer">
+           <rm:minInclusive value="18"></rm:minInclusive>
+           </rm:restriction>
+           </rm:simpleType>
+           
+           <rm:simpleType name = "check">
+           <rm:restriction base = "rm:integer">
+           <rm:totalDigits value = "5"></rm:totalDigits>
+           </rm:restriction>
+           </rm:simpleType>
+           
+            
+           
+           
+           </rm:schema>
+           
+                         
