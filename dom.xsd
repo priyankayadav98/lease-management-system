@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<em:schema xmlns:em ="http://www.w3.org/2001/XMLSchema">
+	<em:element name="Rental" type="Tenants" />
+    <em:complexType name="Tenants">
+      <em:sequence>
+         <em:element name="Tenant" type="tmp" minOccurs="1" maxOccurs="unbounded" />	
+      </em:sequence>
+    </em:complexType>
+    
+    <em:complexType name="tmp">
+      <em:sequence>
+         <em:element name="Name" type="em:string" />
+         <em:element name="Age" type="em:integer" />
+         <em:element name="NO_MEMBER" type="em:integer" />
+         <em:element name="Phonenum" type="check" />
+      </em:sequence>
+      <em:attribute name="ID" type="em:ID" use="required" />
+      
+      
+    </em:complexType>
+    
+     <em:simpleType name = "check">
+           <em:restriction base = "em:integer">
+           <em:totalDigits value = "10"></em:totalDigits>
+           </em:restriction>
+           </em:simpleType>
+           </em:schema>

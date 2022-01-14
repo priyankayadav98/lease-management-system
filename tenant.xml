@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Rental xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="dom.xsd">
+  <Tenant ID="101">
+    <Name>Vishnu</Name>
+    <Age>23</Age>
+    <NO_MEMBER>3</NO_MEMBER>
+    <Phonenum>6289676192</Phonenum>
+  </Tenant>
+  <Tenant ID="102">
+    <Name>Vimal</Name>
+    <Age>32</Age>
+    <NO_MEMBER>2</NO_MEMBER>
+    <Phonenum>6289676292</Phonenum>
+  </Tenant>
+   <Tenant ID="103">
+    <Name>Vikash</Name>
+    <Age>21</Age>
+    <NO_MEMBER>1</NO_MEMBER>
+    <Phonenum>6289676392</Phonenum>
+  </Tenant>
+  <Tenant ID="104">
+    <Name>Pradeep</Name>
+    <Age>20</Age>
+    <NO_MEMBER>4</NO_MEMBER>
+    <Phonenum>6289676492</Phonenum>
+  </Tenant>
+  <Tenant ID="105">
+    <Name>Amina</Name>
+    <Age>45</Age>
+    <NO_MEMBER>5</NO_MEMBER>
+    <Phonenum>6289676592</Phonenum>
+  </Tenant>
+</Rental>
