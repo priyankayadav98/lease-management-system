@@ -47,7 +47,7 @@ function deleteRecord(i)
 {
     y = xmlDoc.getElementsByTagName("Tenant")[i]
     var name = y.getElementsByTagName("Name")[0].childNodes[0].nodeValue
-    var reply = confirm("Do you want to delete record? \nName: " + name)
+    var reply = confirm("delete record? \nName: " + name)
     if(reply == true)
     {
         xmlDoc.documentElement.removeChild(y)
