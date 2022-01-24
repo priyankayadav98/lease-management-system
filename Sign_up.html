@@ -1,12 +1,128 @@
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html> 
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet"> 
+        <link href="reg.css" rel="stylesheet"/>
+        <style>
+        #lbpass{
+            width: 30%;
+            margin-left: 75%;
+            text-align: right;
+            margin-right: 10%;
+            color: red;
+            font-style: italic;
+        }
+        </style>
+    </head>
+    <body>
+        <div> 
+            <h1><u>Sign up</u></h1>
+            <br>
+        
+            <form onsubmit="return validate()">
+                <label for="name">Name</label>
+                <input id="name" onkeypress="return invalid_name(event)" placeholder="Enter Name" type="text"/><br>
+                <label id="lbuser" style="color: red; visibility: hidden;">Invalid User</label>
+                <br>
+        
+                <label id="password">Password</label>
+                <input id="pass" placeholder="Enter Password" type="password"/><br>
+                <label id="lbpass" style="color: red; visibility: hidden;">PassWord should contain minimum of 1 lower case letter [a-z],
+                    1 upper case letter [A-Z] ,1 numeric character [0-9] and 1 special character: ~`!@#$%^&*()-_+={}[]|\;:"<>,./?
+                    These character must be EMBEDDED somewhere in the middle lowercase letters.</label>
+                <br>
+        
+                <label for="phone">Phonenumber</label>
+                <input id="phone" onkeypress="return invalid_phone(event)" placeholder="Enter PhoneNumber" type="number"/>
+                <br><br>
+        
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter Email-id">
+        
+                <br><br>
+                <div class="center"><button type="submit">Register</button></div>
+            </form>
+        </div>
+         <script>
+            function invalid_name(event)
+            {
+                let code=event.which;
+                if(code>47 && code<58)
+                    return false;
+                else
+                    return true;
+            }
+            function invalid_phone(event)
+            {
+                let code=event.which;
+                if(code>64 && code<91)
+                    return false;
+                else
+                    return true;
+            }
+            function validate()
+            {
+               var username=document.getElementById("Your name");
+               var password=document.getElementById("password");
+               const regpass=/^([a-z]+)([a-zA-Z0-9]+)+([a-zA-Z0-9~`!@#\$%\^&\*\(\)-_\+={}\[\]|\;:"<>,.\/?]+)([a-z]+)$/;
+        
+               if(username.value.trim()=="")
+               {
+                   alert("Blank Username");
+                   username.style.border="solid 3px red";
+                   document.getElementById("lbuser").style.visibility="visible";
+                   return false;
+               }
+               else if(password.value.trim()=="")
+               {
+                   alert("Blank Password");
+                   return false;
+               }
+               else if(password.value.trim().length<8)
+               {
+                   alert("Password is too short");
+                   return false;
+               }
+               else if(!regpass.test(password.value))
+                {
+                    alert("INVALID Password");
+                    password.style.border="solid 3px red";
+                    document.getElementById("lbpass").style.visibility="visible";
+                    return false;
+                }
+                    
+               
+                var number=document.getElementById("phone");
+                const regnum=/^[0-9]{10}$/;
+        
+                if(regnum.test(number.value))
+                    {
+                        return true;  
+                    }
+                else
+                    {
+                        alert("Invalid Phone Number");
+                        return false;
+                    }   
+        
+                var email=document.getElementById('email');
+                const regemail=/^([a-zA-Z0-9\.-]+) ([a-zA-Z]+)\/([a-zA-Z]+)\.in$/;
+                
+                if(regemail.test(email.value))
+                    {
+                        return true;  
+                    }
+                else
+                    {
+                        alert("Invalid Email ID");
+                        return false;
+                    } 
+        
+            }
+        
+        </script>
+    </body>
+</html>
