@@ -18,10 +18,13 @@
         </style>
     </head>
     <body>
+        <div class="main_container flex_box">
+            <div class="left_cont">
+                <h1>SIGN UP</h1>
+            </div>
+            <div class="right_cont">
         <div> 
-            <h1><u>Sign up</u></h1>
-            <br>
-        
+          <br>
             <form onsubmit="return validate()">
                 <label for="name">Name</label>
                 <input id="name" onkeypress="return invalid_name(event)" placeholder="Enter Name" type="text"/><br>
@@ -45,6 +48,8 @@
                 <br><br>
                 <div class="center"><button type="submit">Register</button></div>
             </form>
+        </div>
+        </div>
         </div>
          <script>
             function invalid_name(event)
