@@ -58,7 +58,7 @@
   
             var user = document.getElementById("email").value;
             var user2 = document.getElementById("email");
-            var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+@(christuniversity.in|christuniversity.com)$/;
 
             if (re.test(user)) {
                 
@@ -67,7 +67,9 @@
             }
             else {
                 user2.style.border = "red solid 2px";
-                alert("Incorrect Email id");
+              
+                alert("please input official mailid");
+                // /alert("Incorrect Email id");
                 return false;
                  }
         }
