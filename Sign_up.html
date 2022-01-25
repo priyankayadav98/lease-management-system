@@ -1,133 +1,165 @@
-
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet"> 
-        <link href="reg.css" rel="stylesheet"/>
-        <style>
-        #lbpass{
-            width: 30%;
-            margin-left: 75%;
-            text-align: right;
-            margin-right: 10%;
-            color: red;
-            font-style: italic;
-        }
-        </style>
-    </head>
-    <body>
-        <div class="main_container flex_box">
-            <div class="left_cont">
-                <h1>SIGN UP</h1>
-            </div>
-            <div class="right_cont">
-        <div> 
-          <br>
-            <form onsubmit="return validate()">
-                <label for="name">Name</label>
-                <input id="name" onkeypress="return invalid_name(event)" placeholder="Enter Name" type="text"/><br>
-                <label id="lbuser" style="color: red; visibility: hidden;">Invalid User</label>
-                <br>
-        
-                <label id="password">Password</label>
-                <input id="pass" placeholder="Enter Password" type="password"/><br>
-                <label id="lbpass" style="color: red; visibility: hidden;">PassWord should contain minimum of 1 lower case letter [a-z],
-                    1 upper case letter [A-Z] ,1 numeric character [0-9] and 1 special character: ~`!@#$%^&*()-_+={}[]|\;:"<>,./?
-                    These character must be EMBEDDED somewhere in the middle lowercase letters.</label>
-                <br>
-        
-                <label for="phone">Phonenumber</label>
-                <input id="phone" onkeypress="return invalid_phone(event)" placeholder="Enter PhoneNumber" type="number"/>
-                <br><br>
-        
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Enter Email-id">
-        
-                <br><br>
-                <div class="center"><button type="submit">Register</button></div>
-            </form>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet"> 
+    <link href="reg.css" rel="stylesheet"/>
+</head>
+<body >
+
+    <div class="main_container flex_box">
+        <div class="left_cont">
+            <h1>SIGN UP</h1>
         </div>
-        </div>
-        </div>
-         <script>
-            function invalid_name(event)
-            {
-                let code=event.which;
-                if(code>47 && code<58)
-                    return false;
-                else
-                    return true;
-            }
-            function invalid_phone(event)
-            {
-                let code=event.which;
-                if(code>64 && code<91)
-                    return false;
-                else
-                    return true;
-            }
-            function validate()
-            {
-               var username=document.getElementById("Your name");
-               var password=document.getElementById("password");
-               const regpass=/^([a-z]+)([a-zA-Z0-9]+)+([a-zA-Z0-9~`!@#\$%\^&\*\(\)-_\+={}\[\]|\;:"<>,.\/?]+)([a-z]+)$/;
+        <div class="right_cont">
+    <div> 
+              <br>
+                        <form method="POST" class="register-form" id="register-form" >
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="name" name="name" id="name"    onkeydown=" return test(event)" placeholder="Your Name"  />
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" name="email" id="email" placeholder="Your Email"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="pass" id="pass" placeholder="Password"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone_no"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <input type="phone" name="phone" id="phone" onkeydown=" return test2(event)" placeholder="Phone no"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                                <label for="agree-term" class="label-agree-term" style="font-size: small;"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register" onclick="allLetter() ; return false" />
+                            </div>
+                        </form>
+                  
         
-               if(username.value.trim()=="")
-               {
-                   alert("Blank Username");
-                   username.style.border="solid 3px red";
-                   document.getElementById("lbuser").style.visibility="visible";
-                   return false;
-               }
-               else if(password.value.trim()=="")
-               {
-                   alert("Blank Password");
-                   return false;
-               }
-               else if(password.value.trim().length<8)
-               {
-                   alert("Password is too short");
-                   return false;
-               }
-               else if(!regpass.test(password.value))
-                {
-                    alert("INVALID Password");
-                    password.style.border="solid 3px red";
-                    document.getElementById("lbpass").style.visibility="visible";
-                    return false;
-                }
-                    
-               
-                var number=document.getElementById("phone");
-                const regnum=/^[0-9]{10}$/;
-        
-                if(regnum.test(number.value))
-                    {
-                        return true;  
-                    }
-                else
-                    {
-                        alert("Invalid Phone Number");
-                        return false;
-                    }   
-        
-                var email=document.getElementById('email');
-                const regemail=/^([a-zA-Z0-9\.-]+) ([a-zA-Z]+)\/([a-zA-Z]+)\.in$/;
+  
+    
+ 
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script type="text/javascript">
+
+          
+        function validateEmail() {
+  
+            var user = document.getElementById("email").value;
+            var user2 = document.getElementById("email");
+            var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+            if (re.test(user)) {
                 
-                if(regemail.test(email.value))
-                    {
-                        return true;  
-                    }
-                else
-                    {
-                        alert("Invalid Email ID");
-                        return false;
-                    } 
-        
+                password();
+                return true;
             }
-        
-        </script>
-    </body>
+            else {
+                user2.style.border = "red solid 2px";
+                alert("Incorrect Email id");
+                return false;
+                 }
+        }
+
+
+
+function validatePhone() {
+  
+var user = document.getElementById("phone").value;
+var user2 = document.getElementById("phone");
+var re = /^[7-9][0-9]{9}$/;
+  if (re.test(user) & user.length ==10) {
+      alert("YOU HAVE SUCCESSFULLY REGISTERED");
+      return true;
+    }
+  else {
+
+      user2.style.border = "red solid 2px";
+      alert("Phone no should be of 10 digits");
+      return false;
+  } }
+
+function allLetter()
+{
+var user = document.getElementById("name").value;
+var user2 = document.getElementById("name");
+var re = /^[a-zA-Z ]*$/;
+if (re.test(user) ) {
+    
+    validateEmail();
+   
+}
+else {
+
+    user2.style.border = "red solid 2px";
+    alert("Name should contain only alphabets");
+    return false;
+}
+
+
+}
+
+
+function  password()
+{
+var user = document.getElementById("pass").value;
+var user2 = document.getElementById("pass");
+var re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/;
+if (re.test(user) ) {
+    
+    validatePhone();
+    
+}
+else {
+
+    user2.style.border = "red solid 2px";
+    alert("Password must contain : "+  "\n" + "1.minimum of 1 lower case letter [a-z]"+ "\n"  +"2. minimum of 1 upper case letter [A-Z]"+ "\n" +"3. minimum of 1 numeric character [0-9]" + "\n" + " 4.1 special character ");
+    return false;
+} 
+}
+
+
+
+
+
+
+
+function test(event)
+{
+    let code=event.which;
+    if(code>47&&code<58)
+   
+    return false;
+    else
+    return true;
+    
+}
+function test2(event)
+{
+    let code=event.which;
+    if(code>64&&code<91)
+   
+    return false;
+    else
+    return true;
+    
+}
+
+</script> 
+
+  
+
+    
+</body>
 </html>
