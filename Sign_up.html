@@ -9,8 +9,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet"> 
     <link href="reg.css" rel="stylesheet"/>
+    <style>
+        
+        .align_img
+            {
+                margin-left: 0;
+                margin-right: 0;
+                justify-content: center;
+            }
+    </style>
 </head>
 <body >
+
+    <div class="align_img">
+        <img id="img" width="500px">
+        </div>
 
     <div class="main_container flex_box">
         <div class="left_cont">
@@ -18,11 +31,13 @@
         </div>
         <div class="right_cont">
     <div> 
+        <input type="button" value="Set Color" onclick="set_color()"/>
+        <input type="button" value="Set Image" onclick="set_img()"/>
               <br>
-                        <form method="POST" class="register-form" id="register-form" >
+                        <form action="Sign_up.html" id="form">
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="name" name="name" id="name"    onkeydown=" return test(event)" placeholder="Your Name"  />
+                                <input type="name" name="name"  id="name"    onkeydown=" return test(event)" placeholder="Your Name"  />
                             </div>
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
@@ -41,24 +56,79 @@
                                 <label for="agree-term" class="label-agree-term" style="font-size: small;"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register" onclick="allLetter() ; return false" />
+                                <button type="submit" onclick="setCookiesSessionLocal() ; screenTop()"> Submit</button>
+                            </div>
+                            <div class="align_btn">
+                                <input type="button" value="Remove cookies" onclick="rem_cookies()"/>
                             </div>
                         </form>
                   
         
   
     
- 
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="js/main.js"></script>
     <script type="text/javascript">
+
+
+
+window.onload=function()
+    {
+        if(document.cookie.length!=0)
+        {
+            var i=document.cookie.split("=");
+            color=(i[1].split(";"))[0];
+            document.getElementById("form").style.backgroundColor=color;
+            document.getElementById("img").src=i[2];
+        }
+    }
+    function rem_cookies()
+    {
+        var res = document.cookie;
+        var multiple = res.split(";");
+        for(var i = 0; i < multiple.length; i++) 
+        {
+            var key = multiple[i].split("=");
+            document.cookie = key[0]+" =; expires = Thu, 05 Jan 1970 00:00:00 UTC";
+        }
+    }
+        
+    function set_color()
+    {
+        var value= "#FFFF00";
+
+        document.getElementById("form").style.backgroundColor=value;
+        document.cookie="color="+value+";expires=Mon,21 february 2022 07:30:15 UTC;";
+        console.log(document.cookie);
+    }
+    
+    function setCookiesSessionLocal()
+       {
+           name=document.getElementById("name").value;
+           document.cookie="name="+name+";expires=Mon,21 february 2022 09:30:15 UTC;";
+
+           email=document.getElementById("email").value;
+           localStorage.setItem("email=",email);
+
+           phone=document.getElementById("phone").value;
+           sessionStorage.setItem("phone=",phone);
+         
+       }
+       function set_img()
+    {
+        var path="/images/c.jpg";
+
+        document.getElementById("img").src=path;
+        document.cookie="img="+path+";expires=Mon,11 April 2022 06:30:15 UTC;";
+        console.log(document.cookie);
+    }
+
+
 
           
         function validateEmail() {
   
             var user = document.getElementById("email").value;
             var user2 = document.getElementById("email");
-            var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+@(christuniversity.in|christuniversity.com)$/;
+            var re = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+@(christuniversity.in|christuniversity.com)$/;
 
             if (re.test(user)) {
                 
@@ -117,7 +187,7 @@ function  password()
 {
 var user = document.getElementById("pass").value;
 var user2 = document.getElementById("pass");
-var re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/;
+var re = /^(?=.[a-z])(?=.[A-Z])(?=.[0-9])(?=.[^A-Za-z0-9])(?=.{8,})/;
 if (re.test(user) ) {
     
     validatePhone();
